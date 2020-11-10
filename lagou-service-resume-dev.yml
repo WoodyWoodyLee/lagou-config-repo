@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: lagou-service-resume
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db.host:3306/lagou?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: cjhyy^12345@A6
+  jpa:
+    database: mysql
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://LagouCloudEurekaServerA:8761/eureka/,http://LagouCloudEurekaServerB:8762/eureka/,http://LagouCloudEurekaServerC:8763/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
